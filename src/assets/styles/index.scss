@@ -1,31 +1,11 @@
 $primary-color: #007acc;
 $dark-primary-color: darken($primary-color, 10%);
 
-.app {
-  max-width: 1600px;
-  margin: 0 auto;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.app div{
-  float:left;
-  height:95%;
-}
-.app .LElist{
-  margin-left: 15px;
-}
-h1 {
-  text-align: center;
-}
 
 label{
   margin-bottom: 50px;
 }
 
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
 
 li {
   margin-bottom: 10px;
@@ -33,23 +13,61 @@ li {
   justify-content: space-between;
   align-items: center;
 }
+/*Function change area style*/
 
-/*Grid Area Style*/
-.gridResult table{
-  border-collapse: separate;
-  border-spacing: 20px;
+.nav-pills > li > a {
+  color: rgb(4,170,109);
 }
-.gridResult tr{
-  border:solid;
+.nav-pills > li > a.hover {
+  color: rgb(4,170,109)
 }
-.gridResult td{
-  border: solid;
-  width: 80px;
-  height: 80px;
-  text-align: center;
-  
+.nav-pills > li > a.active {
+  color: white !important;
+  background-color: rgb(4,170,109) !important;
 }
+/*Output area style*/
+.LElist .downloadicon
+{
+  cursor:pointer;
+  font-weight: bold;
+  color: #007acc;
+}
+.LElist .downloadicon:hover
+{
+  text-decoration: underline;
+}
+.LElist 
 #cliresult{
   font-size: 18px;
   line-height: 200%;
+}
+/*Preview Area Style*/
+.preview{
+  text-align: center;
+  //background-color: aquamarine;
+}
+.preview #gridtitle{
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
+  //background-color: #007acc;
+}
+.preview table{
+  position: relative;
+  border-collapse: separate;
+  border-spacing: 5px;
+  width:300px;
+  height: 260px;
+  left: 50%;
+  transform: translate(-50%,0);
+  //background-color: #007acc;
+  //font-size: 50%;
+}
+.preview td{
+  border: solid;
+  border-width: 1px;
+  // width: 80px;
+  // height: 80px;
+  text-align: center;
+  
 }
