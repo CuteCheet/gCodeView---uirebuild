@@ -3,11 +3,10 @@
     <h1>gCodeView</h1>
   </div>
 
-  <div class="container-fluid mt-5" style="padding:3%;">
-    <div class="row">
-      <div class="functions col-sm-3">
+  <div class="container-fluid " style="padding:3%;">
+    <div class="functions row">
         <h3>Test Patterns</h3>
-        <ul class="nav nav-pills flex-column functionbar" role="tablist" aria-orientation="vertical">
+        <ul class="nav nav-pills functionbar" role="tablist" aria-orientation="vertical">
           <li class="nav-item">
             <a class="nav-link active" data-bs-toggle="pill" @click="onClickLeTest">LE test</a>
           </li>
@@ -19,46 +18,242 @@
           </li>
         </ul>
       </div>
-      <div class="input_fields col-sm-3">
-        <h3>Input Fields:</h3>
-        <div id="LeTestFields" v-if="this.testType===0">
-          <input v-model="input_rowss"  type="text" class="form-control" placeholder="rows" data-bs-toggle="tooltip" data-bs-placement="right" title="Rows"/><br>
-          <input v-model="input_heightt"  type="text" class="form-control" placeholder="height"  title="Height"/><br>
-          <input v-model="input_columnss" type="text" class="form-control"  placeholder="columns"  title="Column"/><br>
-          <input v-model="input_widthh" type="text" class="form-control"  placeholder="width"  title="Width"/><br>
-          <input v-model="input_padding_fieldss" type="text" class="form-control"  placeholder="padding_fields"  title="Padding Fields"/><br>
-          <input v-model="input_padding_letterss" type="text" class="form-control"  placeholder="padding_letters"  title="Padding Letters"/><br>
-          <input v-model="input_lpii" type="text" class="form-control"  placeholder="lines per inch"  titel="Lines Per Inch"/><br>
-          <input v-model="input_laser_power_ww" type="text" class="form-control"  placeholder="laser_power_w"  title="Laser power"/><br>
-          <input v-model="input_laser_min_powerr" type="text" class="form-control"  placeholder="laser_min_power"  title="Laser Min Power"/><br>
-          <input v-model="input_laser_max_powerr" type="text" class="form-control"  placeholder="laser_max_power"  title="Laser Max Power"/><br>
-          <input v-model="input_laser_min_speedd" type="text" class="form-control"  placeholder="laser_min_speed"  title="Laser Min Speed"/><br>
-          <input v-model="input_laser_max_speedd" type="text" class="form-control"  placeholder="laser_max_speed"  title="Laser Max Speed"/><br>
+    <div class="row" style="background-color: white">
+      <div class="inputarea col-sm-7" style="background-color:white">
+        <h3>Input Fields:</h3><br>
+        <div class="row">
+          <div class="col-sm-6">
+            <h5>Grid Settings:</h5>
+            <div v-if="this.testType===0">
+              <v-text-field label="Rows" v-model="input_rowss" variant="outlined">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Rows</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Height" v-model="input_heightt" variant="outlined" suffix="mm">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Height</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Columns" v-model="input_columnss" variant="outlined" >
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Columns</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Width" v-model="input_widthh" variant="outlined" suffix="mm">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Width</v-tooltip>
+              </v-text-field>
+            </div>
+            <div v-if="this.testType===1">
+              <v-text-field label="Rows" v-model="input_rowss" variant="outlined" >
+              <v-tooltip
+                activator = "parent"
+                location = "end"
+                >Rows</v-tooltip>
+            </v-text-field>
+            <v-text-field label="Height" v-model="input_heightt" variant="outlined" suffix="mm">
+              <v-tooltip
+                activator = "parent"
+                location = "end"
+                >Height</v-tooltip>
+            </v-text-field>
+            <v-text-field label="Columns" v-model="input_columnss" variant="outlined" >
+              <v-tooltip
+                activator = "parent"
+                location = "end"
+                >Column</v-tooltip>
+            </v-text-field>
+            <v-text-field label="Width" v-model="input_widthh" variant="outlined" suffix="mm">
+              <v-tooltip
+                activator = "parent"
+                location = "end"
+                >Width</v-tooltip>
+            </v-text-field>
+            </div>
+            <div v-if="this.testType===2">
+              <v-text-field label="Rows" v-model="input_rowss" variant="outlined">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Rows</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Height" v-model="input_heightt" variant="outlined" suffix="mm">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Height</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Columns" v-model="input_columnss" variant="outlined" >
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Columns</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Width" v-model="input_widthh" variant="outlined" suffix="mm">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Width</v-tooltip>
+              </v-text-field>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <h5>Laser Settings:</h5>
+            <div v-if="this.testType===0">
+              <v-text-field label="Padding Fields" v-model="input_padding_fieldss" variant="outlined" suffix="mm">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Padding Fields</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Padding Letters" v-model="input_padding_letterss" variant="outlined">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Padding Letters</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Lines per inch" v-model="input_lpii" variant="outlined" suffix="1/inch">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Lines per inch</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Laser Power" v-model="input_laser_power_ww" variant="outlined" suffix="W">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Laser Power</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Laser Min Power" v-model="input_laser_min_powerr" variant="outlined" suffix="%">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Laser Min Power</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Laser Max Power" v-model="input_laser_max_powerr" variant="outlined" suffix="%">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Laser Max Power</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Laser Min Speed" v-model="input_laser_min_speedd" variant="outlined" suffix="mm/min">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Laser Min Speed</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Laser Max Speed" v-model="input_laser_max_speedd" variant="outlined" suffix="mm/min">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Laser Max Speed</v-tooltip>
+              </v-text-field>
+            </div>
+            <div v-if="this.testType===1">
+              <v-text-field label="Padding Fields" v-model="input_padding_fieldss" variant="outlined" suffix="mm">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Padding Fields</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Padding Letters" v-model="input_padding_letterss" variant="outlined" >
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Padding Letters</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Passes Factor" v-model="input_passes_factorr" variant="outlined" >
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Passes Factor</v-tooltip>
+              </v-text-field>
+              <v-text-field label="LE variance" v-model="input_le_variancee" variant="outlined" >
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >LE variance</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Laser Power" v-model="input_laser_power_ww" variant="outlined" suffix="W">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Laser Power</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Laser Speed" v-model="input_laser_speedd" variant="outlined" suffix="mm/min">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Laser Speed</v-tooltip>
+              </v-text-field>
+            </div>
+            <div v-if="this.testType===2">
+              <v-text-field label="Padding Fields" v-model="input_padding_fieldss" variant="outlined" suffix="mm">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Padding Fields</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Padding Letters" v-model="input_padding_letterss" variant="outlined">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Padding Letters</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Lines per inch" v-model="input_lpii" variant="outlined" suffix="1/inch">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Lines per inch</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Laser Power" v-model="input_laser_power_ww" variant="outlined" suffix="W">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Laser Power</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Laser Min Power" v-model="input_laser_min_powerr" variant="outlined" suffix="%">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Laser Min Power</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Laser Max Power" v-model="input_laser_max_powerr" variant="outlined" suffix="%">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Laser Max Power</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Laser Min Speed" v-model="input_laser_min_speedd" variant="outlined" suffix="mm/min">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Laser Min Speed</v-tooltip>
+              </v-text-field>
+              <v-text-field label="Laser Max Speed" v-model="input_laser_max_speedd" variant="outlined" suffix="mm/min">
+                <v-tooltip
+                  activator = "parent"
+                  location = "end"
+                  >Laser Max Speed</v-tooltip>
+              </v-text-field>
+            </div>
+            <div  class="error">{{ error }}</div><br>
+            <button class = "btn btn-success" @click="runLaser">GO</button>&nbsp;&nbsp;&nbsp;
+            <button class = "btn btn-success" @click="resetBtn">Reset</button>
+          </div>
         </div>
-        <div id="PassTestFields" v-if="this.testType===1">
-          <input v-model="input_rowss"  type="text" class="form-control" placeholder="rows" data-bs-toggle="tooltip" data-bs-placement="right" title="Rows"/><br>
-          <input v-model="input_heightt" type="text" class="form-control"  placeholder="Height"  title="Height"/><br>
-          <input v-model="input_columnss" type="text" class="form-control"  placeholder="columns"  title="Column"/><br>
-          <input v-model="input_widthh" type="text" class="form-control"  placeholder="Width"  title="Width"/><br>
-          <input v-model="input_padding_fieldss" type="text" class="form-control"  placeholder="padding_fields"  title="Padding Fields"/><br>
-          <input v-model="input_padding_letterss" type="text" class="form-control"  placeholder="padding_letters"  title="Padding Letters"/><br>
-          <input v-model="input_passes_factorr"  type="text" class="form-control" placeholder="passes factor" data-bs-toggle="tooltip" data-bs-placement="right" title="Passes Factor"/><br>
-          <input v-model="input_le_variancee"  type="text" class="form-control" placeholder="LE variance"  title="LE Variance"/><br>
-          <input v-model="input_laser_power_ww" type="text" class="form-control"  placeholder="Laser Power"  title="Laser Power"/><br>
-          <input v-model="input_laser_speedd" type="text" class="form-control"  placeholder="Laser Speed"  title="Laser Speed"/><br>
-        </div>
-        <button class = "btn btn-success" @click="runLaser">GO</button>&nbsp;&nbsp;&nbsp;
       </div>
-      <div class="LElist col-sm-3">
-        <h2>Output</h2>
-        <p v-if="this.grid_rows>0" @click="downLoadgCode" class="downloadicon">
-          Download gCode <img src="@/assets/image/download.png" style="width: 20px; height: 20px;" alt="download png">
-        </p>
-        <p v-if="this.testType===0"  id="cliresult"></p><br>
+      <div class="blackarea col-sm-1">
+        
       </div>
-
-      <div class="preview col-sm-3">
-        <h3>Preview</h3>
+      <div class="outputarea col-sm-4" style="background-color: white;">
+        <div v-if="this.testType===0"  id="cliresult"></div><br>
         <p v-if="this.grid_rows>0 && this.testType<1" id="gridtitle">{{this.minLE}}-{{ this.maxLE }} L{{ ((this.maxLE-this.minLE) / (this.grid_columns*this.grid_rows-1)).toFixed(1)}}</p>
         <table v-if="this.testType<1">
           <tr v-for="i in this.grid_rows">
@@ -67,18 +262,20 @@
             </td>
           </tr>
         </table>
+        <br>
+        <p v-if="this.grid_rows>0" @click="downLoadgCode" class="downloadicon">
+          Download gCode <img src="@/assets/image/download.png" style="width: 20px; height: 20px;" alt="download png">
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
 import {copysign, map_p, LE, Gcode, Le_field} from '../src/assets/js/total.js';
+
 var laser;
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-});
 
 class Laser {
   le_list = [];
@@ -299,7 +496,7 @@ export default {
   name: "gCodeView",
   data() {
     return {
-     
+     error:"",
       LEs:[],
       grid_rows:0,
       grid_columns:0,
@@ -308,7 +505,21 @@ export default {
       basic_code:[],
       gcode:[],
       testType:0,
-
+      input_rowss : 0,
+      input_heightt : 0,
+      input_columnss : 0,
+      input_widthh : 0,
+      input_padding_fieldss : 0,
+      input_padding_letterss : 0,
+      input_lpii : 0,
+      input_laser_power_ww : 0,
+      input_laser_min_powerr : 0,
+      input_laser_max_powerr : 0,
+      input_laser_min_speedd : 0,
+      input_laser_max_speedd : 0,
+      input_laser_speedd:0,
+      input_passes_factorr:0,
+      input_le_variancee:0,
     };
   },
   methods: {
@@ -320,12 +531,70 @@ export default {
       this.minLE=0;
       this.basic_code=[];
       this.gcode=[];
-    
+      this.error="";
+    },
+    resetAllParams(){
+      this.error="";
+      this.input_rowss="";
+        this.input_heightt="";
+        this.input_columnss="";
+        this.input_widthh="";
+        this.input_padding_fieldss="";
+        this.input_padding_letterss="";
+        this.input_lpii="";
+        this.input_laser_power_ww="";
+        this.input_laser_min_powerr="";
+        this.input_laser_max_powerr="";
+        this.input_laser_min_speedd="";
+        this.input_laser_max_speedd="";
+        this.input_rowss="";
+        this.input_heightt="";
+        this.input_columnss="";
+        this.input_widthh="";
+        this.input_padding_fieldss="";
+        this.input_padding_letterss="";
+        this.input_passes_factorr="";
+        this.input_le_variancee="";
+        this.input_laser_power_ww="";
+        this.input_laser_speedd="";
+    },
+    resetBtn(){
+      //this.$refs.LeTestForm.reset();
+      this.resetAllParams();
+    },
+    isValid(){
+      if(this.testType==0)
+      {
+        if(
+        this.input_rowss==0 || 
+        this.input_heightt==0 || 
+        this.input_columnss==0 || 
+        this.input_widthh==0 || 
+        this.input_padding_fieldss==0 || 
+        this.input_padding_letterss==0 || 
+        //this.input_lpii==0 || 
+        this.input_laser_power_ww==0 || 
+        this.input_laser_min_powerr==0 || 
+        this.input_laser_max_powerr==0 || 
+        this.input_laser_min_speedd==0 || 
+        this.input_laser_max_speedd==0)
+          return 1;
+          
+      return 0;
+      }
+      return 0;
     },
     runLaser(){
       if(this.testType==0){
+
+        //alert(this.isValid());
+       if(this.isValid()==1){
+        this.error="Please Input All The Fields Correctly.";
+        return;
+       }
         //alert(this.input_rows);
         //var laser;
+        
         var input_rows = Number(this.input_rowss); 
         var input_height = Number(this.input_heightt);
         var input_columns = Number(this.input_columnss); 
@@ -339,6 +608,18 @@ export default {
         var input_laser_min_speed = Number(this.input_laser_min_speedd);
         var input_laser_max_speed = Number(this.input_laser_max_speedd);
         
+        // var input_rows = 4; 
+        // var input_height = 40;
+        // var input_columns = 6; 
+        // var input_width = 50;
+        // var input_padding_fields = 1.5;
+        // var input_padding_letters = 0.75;
+        // var input_lpi =0;
+        // var input_laser_power_w = 20;
+        // var input_laser_min_power = 100;
+        // var input_laser_max_power = 100;
+        // var input_laser_min_speed = 1800;
+        // var input_laser_max_speed = 1000;
         laser = new Laser(
             input_laser_power_w,
             input_laser_min_power,
@@ -350,7 +631,8 @@ export default {
         
         const le = new LE(10, 2000);
         const header = (laser.le_min.lev()).toFixed(0)+"-"+(laser.le_max.lev()).toFixed(0)+" "+(laser.factor < 2 ? 'F' : 'L')+(laser.factor.toFixed(1));
-        document.getElementById("cliresult").innerText=(laser.factor < 2 ? 'F' : 'L')+ Number(laser.factor).toFixed(1) + 'x' +  (input_rows * input_columns) +  "@ LPI:" +  input_lpi +"\nLE_min: "+laser.le_min+"\t-->\nLE_max: "+laser.le_max;
+        //document.getElementById("cliresult").innerText=(laser.factor < 2 ? 'F' : 'L')+ Number(laser.factor).toFixed(1) + 'x' +  (input_rows * input_columns) +  "@ LPI:" +  input_lpi +"\nLE_min: "+laser.le_min+"\t-->\nLE_max: "+laser.le_max;
+        document.getElementById("cliresult").innerHTML="<br><h5>Laser Factor : "+Number(laser.factor).toFixed(1)+"</h5>"+"<h5>Grid Size : "+(input_rows*input_columns)+" ("+input_rows+"*"+input_columns+") "+"</h5>"+"<h5>Inputed LPI : "+input_lpi+"</h5><br>"+"<h4>Minimum Laser : </h4>"+laser.le_min+"<h4>Maximum Laser : </h4>" + laser.le_max+"<br><br>";
         let height = input_height;
         let width = input_width;
         const tf = new Le_field(
@@ -384,8 +666,17 @@ export default {
         var input_width = Number(this.input_widthh);
         var input_height = Number(this.input_heightt);
         var input_laser_power_w = Number(this.input_laser_power_ww);
-        var input_laser_speed = Number(this.input_laser_max_speedd);
-
+        var input_laser_speed = Number(this.input_laser_speedd);
+        // var input_rows = 4; 
+        // var input_columns = 6; 
+        // var input_padding_fields = 1.5;
+        // var input_padding_letters = 0.75;
+        // var input_passes_factor = 1;
+        // var input_le_variance = 0.05;
+        // var input_width = 100;
+        // var input_height = 60;
+        // var input_laser_power_w = 20;
+        // var input_laser_speed = 1000;
         var input_base_le = new LE(input_laser_power_w, input_laser_speed);
         var pf = new Passes_field(
             input_base_le,
@@ -397,6 +688,7 @@ export default {
             input_passes_factor,
             input_le_variance
         );
+        
         var height = input_height;
         var width = input_width;
         var rowheight, colwidth, max_passes;
@@ -425,7 +717,7 @@ export default {
       //for()
       if(this.testType==0)
         textToWrite += this.LEs;
-      textToWrite += "M5";
+      textToWrite += "\nM5";
       var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
 
       var fileNameToSaveAs ;
@@ -493,10 +785,7 @@ export default {
   computed: {
   },
   mounted() {
+
   },
   };
 </script>
-
-<style scoped>
-
-</style>

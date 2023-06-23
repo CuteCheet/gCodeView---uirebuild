@@ -2,57 +2,47 @@ $primary-color: #007acc;
 $dark-primary-color: darken($primary-color, 10%);
 
 
-label{
-  margin-bottom: 50px;
+.container-fluid{
+  //background-color: rgb(249,250,254);
+  //background-color: rgb(217, 255, 222);
+  background-color: white;
+  color:rgb(4, 58, 4);
+  //padding: 3%;
 }
+//Navbar style
 
-
-li {
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+//Mainarea style
+//Inputarea style
+.error{
+  color:red;
 }
-/*Function change area style*/
-
-.nav-pills > li > a {
-  color: rgb(4,170,109);
+//Outputare style
+.outputarea{
+  text-align: center;
 }
-.nav-pills > li > a.hover {
-  color: rgb(4,170,109)
-}
-.nav-pills > li > a.active {
-  color: white !important;
-  background-color: rgb(4,170,109) !important;
-}
-/*Output area style*/
-.LElist .downloadicon
+.outputarea .downloadicon
 {
   cursor:pointer;
   font-weight: bold;
   color: #007acc;
 }
-.LElist .downloadicon:hover
+.outputarea .downloadicon:hover
 {
   text-decoration: underline;
 }
-.LElist 
+.outputarea 
 #cliresult{
   font-size: 18px;
   line-height: 200%;
 }
-/*Preview Area Style*/
-.preview{
-  text-align: center;
-  //background-color: aquamarine;
-}
-.preview #gridtitle{
+
+.outputarea #gridtitle{
   width: 100%;
   font-size: 30px;
   text-align: center;
   //background-color: #007acc;
 }
-.preview table{
+.outputarea table{
   position: relative;
   border-collapse: separate;
   border-spacing: 5px;
@@ -63,7 +53,7 @@ li {
   //background-color: #007acc;
   //font-size: 50%;
 }
-.preview td{
+.outputarea td{
   border: solid;
   border-width: 1px;
   // width: 80px;
@@ -71,3 +61,22 @@ li {
   text-align: center;
   
 }
+
+
+/*Function change area style*/
+.functions{
+  margin-bottom: 3%;
+}
+.nav-pills > li > a {
+  color: rgb(4,170,109);
+}
+.nav-pills > li > a.hover {
+  color: rgb(4,170,109)
+}
+.nav-pills > li > a.active {
+  color: white !important;
+  background-color: rgb(4,170,109) !important;
+}
+/*InputField Style*/
+
+/*Tooltip style*/
