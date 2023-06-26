@@ -3,253 +3,325 @@
     <h1>gCodeView</h1>
   </div>
 
-  <div class="container-fluid " style="padding:3%;">
-    <div class="functions row">
-        <h3>Test Patterns</h3>
-        <ul class="nav nav-pills functionbar" role="tablist" aria-orientation="vertical">
-          <li class="nav-item">
-            <a class="nav-link active" data-bs-toggle="pill" @click="onClickLeTest">LE test</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="pill" @click="onClickPassTest">Passes test</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="pill" @click="onClickDPITest">DPI test</a>
-          </li>
-        </ul>
-      </div>
+  <div class="container-fluid " style="padding:3%;">  
     <div class="row" style="background-color: white">
       <div class="inputarea col-sm-7" style="background-color:white">
-        <h3>Input Fields:</h3><br>
-        <div class="row">
-          <div class="col-sm-6">
-            <h5>Grid Settings:</h5>
-            <div v-if="this.testType===0">
-              <v-text-field label="Rows" v-model="input_rowss" variant="outlined">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Rows</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Height" v-model="input_heightt" variant="outlined" suffix="mm">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Height</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Columns" v-model="input_columnss" variant="outlined" >
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Columns</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Width" v-model="input_widthh" variant="outlined" suffix="mm">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Width</v-tooltip>
-              </v-text-field>
-            </div>
-            <div v-if="this.testType===1">
-              <v-text-field label="Rows" v-model="input_rowss" variant="outlined" >
-              <v-tooltip
-                activator = "parent"
-                location = "end"
-                >Rows</v-tooltip>
-            </v-text-field>
-            <v-text-field label="Height" v-model="input_heightt" variant="outlined" suffix="mm">
-              <v-tooltip
-                activator = "parent"
-                location = "end"
-                >Height</v-tooltip>
-            </v-text-field>
-            <v-text-field label="Columns" v-model="input_columnss" variant="outlined" >
-              <v-tooltip
-                activator = "parent"
-                location = "end"
-                >Column</v-tooltip>
-            </v-text-field>
-            <v-text-field label="Width" v-model="input_widthh" variant="outlined" suffix="mm">
-              <v-tooltip
-                activator = "parent"
-                location = "end"
-                >Width</v-tooltip>
-            </v-text-field>
-            </div>
-            <div v-if="this.testType===2">
-              <v-text-field label="Rows" v-model="input_rowss" variant="outlined">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Rows</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Height" v-model="input_heightt" variant="outlined" suffix="mm">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Height</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Columns" v-model="input_columnss" variant="outlined" >
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Columns</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Width" v-model="input_widthh" variant="outlined" suffix="mm">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Width</v-tooltip>
-              </v-text-field>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h5>Laser Settings:</h5>
-            <div v-if="this.testType===0">
-              <v-text-field label="Padding Fields" v-model="input_padding_fieldss" variant="outlined" suffix="mm">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Padding Fields</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Padding Letters" v-model="input_padding_letterss" variant="outlined">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Padding Letters</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Lines per inch" v-model="input_lpii" variant="outlined" suffix="1/inch">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Lines per inch</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Laser Power" v-model="input_laser_power_ww" variant="outlined" suffix="W">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Laser Power</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Laser Min Power" v-model="input_laser_min_powerr" variant="outlined" suffix="%">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Laser Min Power</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Laser Max Power" v-model="input_laser_max_powerr" variant="outlined" suffix="%">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Laser Max Power</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Laser Min Speed" v-model="input_laser_min_speedd" variant="outlined" suffix="mm/min">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Laser Min Speed</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Laser Max Speed" v-model="input_laser_max_speedd" variant="outlined" suffix="mm/min">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Laser Max Speed</v-tooltip>
-              </v-text-field>
-            </div>
-            <div v-if="this.testType===1">
-              <v-text-field label="Padding Fields" v-model="input_padding_fieldss" variant="outlined" suffix="mm">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Padding Fields</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Padding Letters" v-model="input_padding_letterss" variant="outlined" >
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Padding Letters</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Passes Factor" v-model="input_passes_factorr" variant="outlined" >
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Passes Factor</v-tooltip>
-              </v-text-field>
-              <v-text-field label="LE variance" v-model="input_le_variancee" variant="outlined" >
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >LE variance</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Laser Power" v-model="input_laser_power_ww" variant="outlined" suffix="W">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Laser Power</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Laser Speed" v-model="input_laser_speedd" variant="outlined" suffix="mm/min">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Laser Speed</v-tooltip>
-              </v-text-field>
-            </div>
-            <div v-if="this.testType===2">
-              <v-text-field label="Padding Fields" v-model="input_padding_fieldss" variant="outlined" suffix="mm">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Padding Fields</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Padding Letters" v-model="input_padding_letterss" variant="outlined">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Padding Letters</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Lines per inch" v-model="input_lpii" variant="outlined" suffix="1/inch">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Lines per inch</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Laser Power" v-model="input_laser_power_ww" variant="outlined" suffix="W">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Laser Power</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Laser Min Power" v-model="input_laser_min_powerr" variant="outlined" suffix="%">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Laser Min Power</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Laser Max Power" v-model="input_laser_max_powerr" variant="outlined" suffix="%">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Laser Max Power</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Laser Min Speed" v-model="input_laser_min_speedd" variant="outlined" suffix="mm/min">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Laser Min Speed</v-tooltip>
-              </v-text-field>
-              <v-text-field label="Laser Max Speed" v-model="input_laser_max_speedd" variant="outlined" suffix="mm/min">
-                <v-tooltip
-                  activator = "parent"
-                  location = "end"
-                  >Laser Max Speed</v-tooltip>
-              </v-text-field>
-            </div>
-            <div  class="error">{{ error }}</div><br>
-            <button class = "btn btn-success" @click="runLaser">GO</button>&nbsp;&nbsp;&nbsp;
-            <button class = "btn btn-success" @click="resetBtn">Reset</button>
-          </div>
-        </div>
-      </div>
-      <div class="blackarea col-sm-1">
+        <v-card>
+          <v-tabs
+            v-model="tab"
+            bg-color="success"
+          >
+            <v-tab value="one" @click="onClickLeTest">LE Test</v-tab>
+            <v-tab value="two" @click="onClickPassTest">Passes Test</v-tab>
+            <v-tab value="three" @click="onClickDPITest">DPI Test</v-tab>
+          </v-tabs>
+
+          <v-card-text>
+            <v-window v-model="tab">
+              <v-window-item value="one">
+                <h3>LE Test</h3><br>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h5>Grid Settings:</h5>
+                    <div v-if="this.testType===0">
+                      <v-text-field label="Rows" v-model="input_rowss" variant="solo" :rules="[rules.required]" append-inner-icon="mdi-information" @click:append-inner="show_rows=!show_rows">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "top"
+                          v-model="show_rows"><p class="mb-0">Rows--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                        </v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Height" v-model="input_heightt" variant="solo" :rules="[rules.required]"  suffix="mm" append-inner-icon="mdi-information" @click:append-inner="show_height=!show_height">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_height"><p class="mb-0">Height--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                        </v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Columns" v-model="input_columnss" variant="solo" :rules="[rules.required]"  append-inner-icon="mdi-information" @click:append-inner="show_columns=!show_columns">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_columns"><p class="mb-0">Columns--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Width" v-model="input_widthh" variant="solo" suffix="mm" :rules="[rules.required]"  append-inner-icon="mdi-information" @click:append-inner="show_width=!show_width">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_width"><p class="mb-0">Width--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <h5>Laser Settings:</h5>
+                    <div v-if="this.testType===0">
+                      <v-text-field label="Padding Fields" v-model="input_padding_fieldss" variant="solo" suffix="mm" append-inner-icon="mdi-information" @click:append-inner="show_padding_fields=!show_padding_fields">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "top"
+                          v-model = "show_padding_fields"><p class="mb-0">Padding Fields--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Padding Letters" v-model="input_padding_letterss" variant="solo" append-inner-icon="mdi-information" @click:append-inner="show_padding_letters=!show_padding_letters">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model = "show_padding_letters"><p class="mb-0">Padding Letters--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Lines per inch" v-model="input_lpii" variant="solo" suffix="1/inch" append-inner-icon="mdi-information" @click:append-inner="show_lines_per_inch=!show_lines_per_inch">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_lines_per_inch"><p class="mb-0">Lines Per Inch--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Laser Power" v-model="input_laser_power_ww" variant="solo" :rules="[rules.required]"  suffix="W" append-inner-icon="mdi-information" @click:append-inner="show_laser_power=!show_laser_power">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_laser_power"><p class="mb-0">Laser Power--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Laser Min Power" v-model="input_laser_min_powerr" variant="solo" :rules="[rules.required]"  suffix="%" append-inner-icon="mdi-information" @click:append-inner="show_laser_min_power=!show_laser_min_power">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_laser_min_power"><p class="mb-0">Laser Min Power--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Laser Max Power" v-model="input_laser_max_powerr" variant="solo" :rules="[rules.required]"  suffix="%" append-inner-icon="mdi-information" @click:append-inner="show_laser_max_power=!show_laser_max_power">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_laser_max_power"><p class="mb-0">Laser Max Power--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Laser Min Speed" v-model="input_laser_min_speedd" variant="solo" :rules="[rules.required]"  suffix="mm/min" append-inner-icon="mdi-information" @click:append-inner="show_laser_min_speed=!show_laser_min_speed">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_laser_min_speed"><p class="mb-0">Laser Min Speed--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Laser Max Speed" v-model="input_laser_max_speedd" variant="solo" :rules="[rules.required]"  suffix="mm/min" append-inner-icon="mdi-information" @click:append-inner="show_laser_max_speed=!show_laser_max_speed">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_laser_max_speed"><p class="mb-0">Laser Max Speed--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                    </div>
+                    
+                  <div  class="error">{{ error }}</div><br>
+                  <v-btn @click="runLaser" color="success">Go</v-btn>&nbsp;&nbsp;&nbsp;
+                  <v-btn @click="resetBtn">Reset</v-btn>
+                  </div>
+                </div>
+              </v-window-item>
+
+              <v-window-item value="two">
+                <h3>Passes Test</h3><br>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h5>Grid Settings:</h5>
+                    <div v-if="this.testType===1">
+                      <v-text-field label="Rows" v-model="input_rowss" variant="solo"  :rules="[rules.required]"  append-inner-icon="mdi-information" @click:append-inner="show_rows=!show_rows">
+                      <v-tooltip
+                        activator = "parent"
+                        location = "end"
+                        v-model="show_rows"><p class="mb-0">Rows--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                    </v-text-field>
+                    <v-text-field label="Height" v-model="input_heightt" variant="solo" :rules="[rules.required]"  suffix="mm"  append-inner-icon="mdi-information" @click:append-inner="show_height=!show_height">
+                      <v-tooltip
+                        activator = "parent"
+                        location = "end"
+                        v-model="show_height"><p class="mb-0">Height--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                    </v-text-field>
+                    <v-text-field label="Columns" v-model="input_columnss" variant="solo" :rules="[rules.required]"  append-inner-icon="mdi-information" @click:append-inner="show_columns=!show_columns">
+                      <v-tooltip
+                        activator = "parent"
+                        location = "end"
+                        v-model="show_columns"><p class="mb-0">Column--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                    </v-text-field>
+                    <v-text-field label="Width" v-model="input_widthh" variant="solo" :rules="[rules.required]"  suffix="mm"  append-inner-icon="mdi-information" @click:append-inner="show_width=!show_width">
+                      <v-tooltip
+                        activator = "parent"
+                        location = "end"
+                        v-model="show_width"><p class="mb-0">Width--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                    </v-text-field>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <h5>Laser Settings:</h5>
+                    <div v-if="this.testType===1">
+                      <v-text-field label="Padding Fields" v-model="input_padding_fieldss" variant="solo" suffix="mm" append-inner-icon="mdi-information" @click:append-inner="show_padding_fields=!show_padding_fields">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "end"
+                          v-model="show_padding_fields"><p class="mb-0">Padding Fields--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Padding Letters" v-model="input_padding_letterss" variant="solo" append-inner-icon="mdi-information" @click:append-inner="show_padding_letters=!show_padding_letters">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "end"
+                          v-model="show_padding_letters"><p class="mb-0">Padding Letters--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Passes Factor" v-model="input_passes_factorr" variant="solo" :rules="[rules.required]"  append-inner-icon="mdi-information" @click:append-inner="show_passes_factor=!show_passes_factor">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "end"
+                          v-model="show_passes_factor"><p class="mb-0">Passes Factor--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="LE variance" v-model="input_le_variancee" variant="solo" :rules="[rules.required]"  suffix="W*s/mm" append-inner-icon="mdi-information" @click:append-inner="show_le_variance=!show_le_variance">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "end"
+                          v-model="show_le_variance"><p class="mb-0">LE variance--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Laser Power" v-model="input_laser_power_ww" variant="solo" :rules="[rules.required]"  suffix="W" append-inner-icon="mdi-information" @click:append-inner="show_laser_power=!show_laser_power">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "end"
+                          v-model="show_laser_power"><p class="mb-0">Laser Power--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Laser Speed" v-model="input_laser_speedd" variant="solo" :rules="[rules.required]"  suffix="mm/min" append-inner-icon="mdi-information" @click:append-inner="show_laser_speed=!show_laser_speed">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "end"
+                          v-model="show_laser_speed"><p class="mb-0">Laser Speed--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                    </div>
+                    
+                  <div  class="error">{{ error }}</div><br>
+                  <v-btn @click="runLaser" color="success">Go</v-btn>&nbsp;&nbsp;&nbsp;
+                  <v-btn @click="resetBtn">Reset</v-btn>
+                  </div>
+                </div>
+              </v-window-item>
+
+              <v-window-item value="three">
+                <h3>DPI Test</h3><br>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h5>Grid Settings:</h5>
+                    <div v-if="this.testType===2">
+                      <v-text-field label="Rows" v-model="input_rowss" variant="solo" :rules="[rules.required]" append-inner-icon="mdi-information" @click:append-inner="show_rows=!show_rows">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "top"
+                          v-model="show_rows"><p class="mb-0">Rows--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                        </v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Height" v-model="input_heightt" variant="solo" :rules="[rules.required]"  suffix="mm" append-inner-icon="mdi-information" @click:append-inner="show_height=!show_height">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_height"><p class="mb-0">Height--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                        </v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Columns" v-model="input_columnss" variant="solo" :rules="[rules.required]"  append-inner-icon="mdi-information" @click:append-inner="show_columns=!show_columns">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_columns"><p class="mb-0">Columns--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Width" v-model="input_widthh" variant="solo" suffix="mm" :rules="[rules.required]"  append-inner-icon="mdi-information" @click:append-inner="show_width=!show_width">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_width"><p class="mb-0">Width--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <h5>Laser Settings:</h5>
+                    <div v-if="this.testType===2">
+                      <v-text-field label="Padding Fields" v-model="input_padding_fieldss" variant="solo" suffix="mm" append-inner-icon="mdi-information" @click:append-inner="show_padding_fields=!show_padding_fields">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "top"
+                          v-model = "show_padding_fields"><p class="mb-0">Padding Fields--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Padding Letters" v-model="input_padding_letterss" variant="solo" append-inner-icon="mdi-information" @click:append-inner="show_padding_letters=!show_padding_letters">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model = "show_padding_letters"><p class="mb-0">Padding Letters--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Lines per inch" v-model="input_lpii" variant="solo" suffix="1/inch" append-inner-icon="mdi-information" @click:append-inner="show_lines_per_inch=!show_lines_per_inch">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_lines_per_inch"><p class="mb-0">Lines Per Inch--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Laser Power" v-model="input_laser_power_ww" variant="solo" :rules="[rules.required]"  suffix="W" append-inner-icon="mdi-information" @click:append-inner="show_laser_power=!show_laser_power">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_laser_power"><p class="mb-0">Laser Power--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Laser Min Power" v-model="input_laser_min_powerr" variant="solo" :rules="[rules.required]"  suffix="%" append-inner-icon="mdi-information" @click:append-inner="show_laser_min_power=!show_laser_min_power">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_laser_min_power"><p class="mb-0">Laser Min Power--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Laser Max Power" v-model="input_laser_max_powerr" variant="solo" :rules="[rules.required]"  suffix="%" append-inner-icon="mdi-information" @click:append-inner="show_laser_max_power=!show_laser_max_power">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_laser_max_power"><p class="mb-0">Laser Max Power--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Laser Min Speed" v-model="input_laser_min_speedd" variant="solo" :rules="[rules.required]"  suffix="mm/min" append-inner-icon="mdi-information" @click:append-inner="show_laser_min_speed=!show_laser_min_speed">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_laser_min_speed"><p class="mb-0">Laser Min Speed--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                      <v-text-field label="Laser Max Speed" v-model="input_laser_max_speedd" variant="solo" :rules="[rules.required]"  suffix="mm/min" append-inner-icon="mdi-information" @click:append-inner="show_laser_max_speed=!show_laser_max_speed">
+                        <v-tooltip
+                          activator = "parent"
+                          location = "bottom"
+                          v-model="show_laser_max_speed"><p class="mb-0">Laser Max Speed--Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                          <p class="mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></v-tooltip>
+                      </v-text-field>
+                    </div>
+                    
+                  <div  class="error">{{ error }}</div><br>
+                  <v-btn @click="runLaser" color="success">Go</v-btn>&nbsp;&nbsp;&nbsp;
+                  <v-btn @click="resetBtn">Reset</v-btn>
+                  </div>
+                </div>
+              </v-window-item>
+            </v-window>
+        </v-card-text>
+      </v-card>
         
       </div>
       <div class="outputarea col-sm-4" style="background-color: white;">
@@ -520,6 +592,25 @@ export default {
       input_laser_speedd:0,
       input_passes_factorr:0,
       input_le_variancee:0,
+      show_rows:false,
+      show_height:false,
+      show_columns:false,
+      show_width:false,
+      show_padding_fields:false,
+      show_padding_letters:false,
+      show_lines_per_inch:false,
+      show_laser_power:false,
+      show_laser_min_power:false,
+      show_laser_max_power:false,
+      show_laser_min_speed:false,
+      show_laser_max_speed:false,
+      show_passes_factor:false,
+      show_le_variance:false,
+      show_laser_speed:false,
+      tab: null,
+      rules: {
+          required: value => !!value || '',
+        },
     };
   },
   methods: {
@@ -566,21 +657,36 @@ export default {
       if(this.testType==0)
       {
         if(
-        this.input_rowss==0 || 
-        this.input_heightt==0 || 
-        this.input_columnss==0 || 
-        this.input_widthh==0 || 
-        this.input_padding_fieldss==0 || 
-        this.input_padding_letterss==0 || 
-        //this.input_lpii==0 || 
-        this.input_laser_power_ww==0 || 
-        this.input_laser_min_powerr==0 || 
-        this.input_laser_max_powerr==0 || 
-        this.input_laser_min_speedd==0 || 
-        this.input_laser_max_speedd==0)
+          this.input_rowss==0 || 
+          this.input_heightt==0 || 
+          this.input_columnss==0 || 
+          this.input_widthh==0 || 
+          //this.input_padding_fieldss==0 || 
+          //this.input_padding_letterss==0 || 
+          //this.input_lpii==0 || 
+          this.input_laser_power_ww==0 || 
+          this.input_laser_min_powerr==0 || 
+          this.input_laser_max_powerr==0 || 
+          this.input_laser_min_speedd==0 || 
+          this.input_laser_max_speedd==0)
           return 1;
-          
-      return 0;
+        return 0;
+      }
+      else if(this.testType==1)
+      {
+        if(
+          this.input_rowss ==0 ||
+          this.input_heightt ==0 ||
+          this.input_columnss ==0 ||
+          this.input_widthh ==0 ||
+          // this.input_padding_fieldss ==0 || 
+          // this.input_padding_letterss ==0 || 
+          this.input_passes_factorr ==0 || 
+          this.input_le_variancee ==0 || 
+          this.input_laser_power_ww ==0 || 
+          this.input_laser_speedd ==0)
+          return 1;
+        return 0;
       }
       return 0;
     },
@@ -590,36 +696,36 @@ export default {
         //alert(this.isValid());
        if(this.isValid()==1){
         this.error="Please Input All The Fields Correctly.";
-        return;
+        //return;
        }
         //alert(this.input_rows);
         //var laser;
         
-        var input_rows = Number(this.input_rowss); 
-        var input_height = Number(this.input_heightt);
-        var input_columns = Number(this.input_columnss); 
-        var input_width = Number(this.input_widthh);
-        var input_padding_fields = Number(this.input_padding_fieldss);
-        var input_padding_letters = Number(this.input_padding_letterss);
-        var input_lpi = Number(this.input_lpii);
-        var input_laser_power_w = Number(this.input_laser_power_ww);
-        var input_laser_min_power = Number(this.input_laser_min_powerr);
-        var input_laser_max_power = Number(this.input_laser_max_powerr);
-        var input_laser_min_speed = Number(this.input_laser_min_speedd);
-        var input_laser_max_speed = Number(this.input_laser_max_speedd);
+        // var input_rows = Number(this.input_rowss); 
+        // var input_height = Number(this.input_heightt);
+        // var input_columns = Number(this.input_columnss); 
+        // var input_width = Number(this.input_widthh);
+        // var input_padding_fields = Number(this.input_padding_fieldss);
+        // var input_padding_letters = Number(this.input_padding_letterss);
+        // var input_lpi = Number(this.input_lpii);
+        // var input_laser_power_w = Number(this.input_laser_power_ww);
+        // var input_laser_min_power = Number(this.input_laser_min_powerr);
+        // var input_laser_max_power = Number(this.input_laser_max_powerr);
+        // var input_laser_min_speed = Number(this.input_laser_min_speedd);
+        // var input_laser_max_speed = Number(this.input_laser_max_speedd);
         
-        // var input_rows = 4; 
-        // var input_height = 40;
-        // var input_columns = 6; 
-        // var input_width = 50;
-        // var input_padding_fields = 1.5;
-        // var input_padding_letters = 0.75;
-        // var input_lpi =0;
-        // var input_laser_power_w = 20;
-        // var input_laser_min_power = 100;
-        // var input_laser_max_power = 100;
-        // var input_laser_min_speed = 1800;
-        // var input_laser_max_speed = 1000;
+        var input_rows = 4; 
+        var input_height = 40;
+        var input_columns = 6; 
+        var input_width = 50;
+        var input_padding_fields = 1.5;
+        var input_padding_letters = 0.75;
+        var input_lpi =0;
+        var input_laser_power_w = 20;
+        var input_laser_min_power = 100;
+        var input_laser_max_power = 100;
+        var input_laser_min_speed = 1800;
+        var input_laser_max_speed = 1000;
         laser = new Laser(
             input_laser_power_w,
             input_laser_min_power,
@@ -632,7 +738,7 @@ export default {
         const le = new LE(10, 2000);
         const header = (laser.le_min.lev()).toFixed(0)+"-"+(laser.le_max.lev()).toFixed(0)+" "+(laser.factor < 2 ? 'F' : 'L')+(laser.factor.toFixed(1));
         //document.getElementById("cliresult").innerText=(laser.factor < 2 ? 'F' : 'L')+ Number(laser.factor).toFixed(1) + 'x' +  (input_rows * input_columns) +  "@ LPI:" +  input_lpi +"\nLE_min: "+laser.le_min+"\t-->\nLE_max: "+laser.le_max;
-        document.getElementById("cliresult").innerHTML="<br><h5>Laser Factor : "+Number(laser.factor).toFixed(1)+"</h5>"+"<h5>Grid Size : "+(input_rows*input_columns)+" ("+input_rows+"*"+input_columns+") "+"</h5>"+"<h5>Inputed LPI : "+input_lpi+"</h5><br>"+"<h4>Minimum Laser : </h4>"+laser.le_min+"<h4>Maximum Laser : </h4>" + laser.le_max+"<br><br>";
+        document.getElementById("cliresult").innerHTML="<br><h5>Laser Factor : "+Number(laser.factor).toFixed(1)+"</h5>"+"<h5>Grid Size : "+(input_rows*input_columns)+" ("+input_rows+"*"+input_columns+") "+"</h5>"+"<h5>Lines Per Inch : "+input_lpi+"</h5><br>"+"<h4>Minimum Laser : </h4>"+laser.le_min+"<h4>Maximum Laser : </h4>" + laser.le_max+"<br><br>";
         let height = input_height;
         let width = input_width;
         const tf = new Le_field(
@@ -716,7 +822,11 @@ export default {
         textToWrite += (this.gcode[i] + "\n");
       //for()
       if(this.testType==0)
-        textToWrite += this.LEs;
+      {
+        //textToWrite += this.LEs;
+        for(i=0;i<this.LEs.length;i++)
+          textToWrite += this.LEs[i]+"\n";
+      }
       textToWrite += "\nM5";
       var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
 
@@ -750,18 +860,18 @@ export default {
 
     },
     onClickLeTest(){
-      this.testType=0;
       this.clear();
+      this.testType=0;
       //alert(0);
     },
     onClickPassTest(){
-      this.testType=1;
       this.clear();
+      this.testType=1;
       //alert(1);
     },
     onClickDPITest(){
-      this.testType=2;
       this.clear();
+      this.testType=2;
       //alert(3);
     },
     onClickLoad(){
